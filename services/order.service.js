@@ -1,5 +1,7 @@
 const boom = require('@hapi/boom');
 
+const sequelize = require("../libs/sequelize");
+
 class OrderService {
 
   constructor(){
@@ -9,7 +11,9 @@ class OrderService {
   }
 
   async find() {
-    return [];
+    const consult = "SELECT * FROM tasks";
+    const response = await this.pool.query(consult)
+    return response.rows;
   }
 
   async findOne(id) {
